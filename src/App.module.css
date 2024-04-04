@@ -18,3 +18,9 @@
   padding: 10px;
   background-color: rgb(47, 47, 47);
 }
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
