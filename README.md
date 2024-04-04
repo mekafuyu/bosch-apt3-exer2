@@ -1,8 +1,13 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Manutencao
 
-Currently, two official plugins are available:
+Tarefas:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+.PRODUTOS
+
+- Devem ser incluidos mais 3 produtos relacionados no arquivo json
+- o json esta faltando os itens Categoria e o status
+- No Card dos produtos o fundo deve contrastar com o fundo do body, estao iguais as cores e uma bolinha vermelha deve aparecer se o status for false e verde se for true, isto pois vermelho representa mostruario e verde para venda.
+
+.API
