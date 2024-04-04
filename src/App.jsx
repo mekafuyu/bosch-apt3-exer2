@@ -49,26 +49,26 @@ function App() {
         <>
           <h2>Rick and Morty API</h2>
             <div>
-            <input type="text" placeholder="1/43" value={page} onChange={(event) => setPage(event.target.value)}/>
+               <input type="text" placeholder="1/43" value={page} onChange={(event) => setPage(event.target.value)}/>
             </div>
             <div>
             {data.map((item) => { 
-          return(
-            <div key={item.id}>
-              <Card name={item.name} desc={item.species} value={item.gender} image={item.image} />
-              {/* <button onClick={() => {}}>Info</button> */}
-            </div>
-          )
-     })}
+             return(
+              <div key={item.id}>
+                <Card name={item.name} desc={item.species} value={item.gender} image={item.image} />
+                {/* <button onClick={() => {}}>Info</button> */}
+              </div>
+              )
+           })}
             </div>
        </>
       }
      {show === "map" &&
         <>
       <h2>Mapa</h2>
-      <div>
-              
-              </div>
+          <div>
+              mapa aqui
+          </div>
          </>
       }
     </div>
