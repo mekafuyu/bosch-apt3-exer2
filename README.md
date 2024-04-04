@@ -1,6 +1,7 @@
 # React + Vite
 
 npm install
+
 npm run dev
 
 # Manutencao
@@ -31,10 +32,15 @@ Tarefas:
 - usando o leaftlet e o react-leaft-let, fazer um mapa com a localizacao do Senai.
 
 import 'leaflet/dist/leaflet.css';
+
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
+
 import "leaflet-defaulticon-compatibility";
 
 https://react-leaflet.js.org/
+
 https://www.npmjs.com/package/react-draggable
+
 https://www.npmjs.com/package/react-tilt
+
 https://vitejs.dev/
