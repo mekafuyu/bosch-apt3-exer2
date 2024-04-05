@@ -1,5 +1,6 @@
 import { Tilt } from "react-tilt";
 import { Ball } from "./Ball";
+import Draggable from "react-draggable";
 
 const defaultOptions = {
   reverse: false, // reverse the tilt direction
@@ -14,49 +15,50 @@ const defaultOptions = {
 };
 
 export const CharCard = ({
-  name,
-  desc,
-  value,
-  image,
-  status,
-  species,
-  type,
-  gender,
+  char,
 }) => {
   return (
     <div
       id="modal"
       style={{
-        // display: "none",
         width: "100%",
-        height: "100%",
+        height: document.body.scrollHeight,
         position: "absolute",
+        backgroundColor: "rgba(0,0,0,0.5)",
         top: 0,
         left: 0,
-        backgroundColor: 'coral'
+        zIndex: 1,
+        display: "none"
       }}
     >
-      <Tilt options={defaultOptions} style={{ height: 250, width: 250 }}>
+      <Draggable>
         <div
           style={{
             backgroundColor: "gray",
             margin: 10,
             padding: 10,
             borderRadius: 10,
+            width: 'fit-content'
           }}
+          id={'charCard'}
         >
           <div style={{ display: "flex" }}>
-            {status == "Alive" ? <Ball color="green" /> : <Ball color="red" />}
-            <h1>{name}</h1>
+            {char.status == "Alive" ? <Ball color="green" /> : <Ball color="red" />}
+            <h1>{char.name}</h1>
           </div>
-          <h2>{desc}</h2>
-          <p>{value}</p>
-          <p>{species}</p>
-          <p>{type}</p>
-          <p>{gender}</p>
-          <img src={image} alt={name} width={150} height={"auto"} />
+          <h2>{char.desc}</h2>
+          <p>{char.value}</p>
+          <p>{char.species}</p>
+          <p>{char.type}</p>
+          <p>{char.gender}</p>
+          <div width="100%">
+            <Tilt options={defaultOptions} style={{width: 'auto'}}>
+              <img src={char.image} alt={char.name} height={"auto"} />
+            </Tilt>
+          </div>
+          <button onClick={() => {document.getElementById('modal').style.display = 'none'}}> Close </button>
         </div>
-      </Tilt>
+      </Draggable>
     </div>
   );
 };

@@ -12,18 +12,9 @@ import style from "./App.module.css";
 import { Alert } from "./components/Alert";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { CharCard } from "./components/CharCard";
+import { Tilt } from "react-tilt";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-Modal.setAppElement("#root");
+
 
 function App() {
   const [show, setShow] = useState("");
@@ -31,20 +22,15 @@ function App() {
   const [page, setPage] = useState("");
   const [name, setName] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
+  const [index, setIndex] = useState(0);
 
-  let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  function openModal() {
-    setIsOpen(true);
+  const openModal = (charIndex) => {
+    setIndex(charIndex)
+    document.getElementById('modal').style.display = 'block'
+    var elem1 = document.getElementById('charCard')
+    var elem2 = document.getElementsByClassName('react-draggable')[0]
+    // elem2.style.transform = `translate(${(document.body.clientWidth - elem1.offsetWidth) / 2}px, ${document.documentElement.scrollTop}px)`
   }
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
-  }
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   useEffect(() => {
     document.getElementById("alert").style.display = "none";
     api
@@ -97,24 +83,8 @@ function App() {
         {show === "api" && (
           <>
             <h2>Rick and Morty API</h2>
-            <Modal
-              isOpen={modalIsOpen}
-              onAfterOpen={afterOpenModal}
-              onRequestClose={closeModal}
-              style={customStyles}
-              contentLabel="Example Modal"
-            >
-              <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-              <button onClick={closeModal}>close</button>
-              <div>I am a modal</div>
-              <form>
-                <input />
-                <button>tab navigation</button>
-                <button>stays</button>
-                <button>inside</button>
-                <button>the modal</button>
-              </form>
-            </Modal>
+            <CharCard char={data[index]}></CharCard>
+
             <div>
               <input
                 type="text"
@@ -130,7 +100,7 @@ function App() {
               />
             </div>
             <div className={style.cardContainer}>
-              {data.map((item) => {
+              {data.map((item, index) => {
                 return (
                   <div key={item.id}>
                     <CardApi
@@ -139,8 +109,8 @@ function App() {
                       value={item.gender}
                       image={item.image}
                       status={item.status}
+                      infoFunc={() => openModal(index)}
                     />
-                    <button onClick={() => {}}>Info</button>
                   </div>
                 );
               })}
